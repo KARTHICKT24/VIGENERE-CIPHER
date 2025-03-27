@@ -3,11 +3,14 @@
  
 
 ## IMPLEMETATION OF VIGENERE CIPHER
- 
+
+## NAME : KARTHICK KISHORE T
+## REG NO : 212223220042
+## DATE 27-03-2025
 
 ## AIM:
 
-To implement the Vigenere Cipher substitution technique using C program.
+To implement the Vigenere Cipher substitution technique using Python program.
 
 ## DESCRIPTION:
 
@@ -31,6 +34,54 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 ## PROGRAM
 
+```
+def vigenere_cipher_encrypt(text, key):
+    encrypted_text = ""
+    key_length = len(key)
+    
+    for i, char in enumerate(text):
+        if char.isalpha():
+            shift = ord(key[i % key_length].lower()) - ord('a')
+            if char.islower():
+                encrypted_text += chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+            else:
+                encrypted_text += chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+        else:
+            encrypted_text += char
+    
+    return encrypted_text
+
+def vigenere_cipher_decrypt(ciphertext, key):
+    decrypted_text = ""
+    key_length = len(key)
+    
+    for i, char in enumerate(ciphertext):
+        if char.isalpha():
+            shift = ord(key[i % key_length].lower()) - ord('a')
+            if char.islower():
+                decrypted_text += chr((ord(char) - ord('a') - shift) % 26 + ord('a'))
+            else:
+                decrypted_text += chr((ord(char) - ord('A') - shift) % 26 + ord('A'))
+        else:
+            decrypted_text += char
+    
+    return decrypted_text
+
+# Example usage
+text = input("Enter text to encrypt: ")
+key = input("Enter key: ")
+
+encrypted = vigenere_cipher_encrypt(text, key)
+print(f"Encrypted Text: {encrypted}")
+
+decrypted = vigenere_cipher_decrypt(encrypted, key)
+print(f"Decrypted Text: {decrypted}")
+```
+
 ## OUTPUT
 
+![crypto 4 py](https://github.com/user-attachments/assets/fdbb87ba-e98e-437a-8a7b-09da533966a7)
+
 ## RESULT
+
+THE VIGENERE CIPHER PROGRAM WAS IMPLEMENTED BY USING PYTHON PROGRAM
